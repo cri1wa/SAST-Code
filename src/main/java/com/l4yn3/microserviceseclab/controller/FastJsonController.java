@@ -15,9 +15,7 @@ public class FastJsonController {
     @PostMapping(value = "/create")
     public Teacher createActivity(@RequestBody String applyData,
                                   HttpServletRequest request, HttpServletResponse response){
-        List<Teacher> te =  new com.l4yn3.microserviceseclab.logic.IndexLogic().getTeacherById(applyData);
         Teacher teachVO = JSON.parseObject(applyData, Teacher.class);
-        
         return teachVO;
     }
 
