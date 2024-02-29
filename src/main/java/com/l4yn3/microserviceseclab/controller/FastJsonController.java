@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/fastjson")
@@ -14,7 +15,9 @@ public class FastJsonController {
     @PostMapping(value = "/create")
     public Teacher createActivity(@RequestBody String applyData,
                                   HttpServletRequest request, HttpServletResponse response){
+        List<Teacher> te =  new com.l4yn3.microserviceseclab.logic.IndexLogic().getTeacherById(applyData);
         Teacher teachVO = JSON.parseObject(applyData, Teacher.class);
+        
         return teachVO;
     }
 
